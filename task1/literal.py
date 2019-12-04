@@ -4,5 +4,5 @@ class Literal:
       self.symbol = ''
       self.vars = []
 
-   def strpliteral(literal_string):
+   def strpliteral(literal_str):
       pass
