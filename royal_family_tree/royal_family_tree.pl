@@ -29,19 +29,32 @@ female(autumn).
 female(zara).
 female(louise).
 
-/* Marital status */
+/* Marital status
+Note: marital status needs to be set for both partners.
+*/
 married(elizabethII, philip).
+married(philip, elizabethII).
 married(charles, camilla).
+married(camilla, charles).
 married(andrew, sarah).
+married(sarah, andrew).
 married(william, kate).
+married(kate, william).
 married(harry, meghan).
+married(meghan, harry).
 married(anne, timothy).
+married(timothy, anne).
 married(edward, sophie).
+married(sophie, edward).
 married(peter, autumn).
+married(autumn, peter).
 married(zara, mike).
+married(mike, zara).
 
 divorced(diana, charles).
+divorced(charles, diana).
 divorced(mark, anne).
+divorced(anne, mark).
 
 /* Family relationship
 - Define from top to bottom, from left to right*/
@@ -106,10 +119,21 @@ sibling(Person1,Person2) :- father(Father, Person1), father(Father, Person2), mo
 brother(Person,Sibling) :- sibling(Person, Sibling), male(Sibling).
 sister(Person,Sibling) :- sibling(Person, Sibling), female(Sibling).
 
-aunt(Person, NieceNephew) :-
-    sister(Person, Mother), mother(Mother, NieceNephew);
-    sister(Person, Father), father(Father, NieceNephew).
+/* Aunt is mother's sister or father's sister or uncle's wife
+- Uncle in this case can be interpreted as brother of parent
+*/
+/*OR operator: http://www.cse.unsw.edu.au/~billw/dictionaries/prolog/or.html*/
+aunt(Person, NieceNephew) :- parent(Parent, NieceNephew),
+    (sister(Parent, Person);(brother(Parent, Uncle), wife(Person, Uncle))).
 
+uncle(Person, NieceNephew) :- parent(Parent, NieceNephew),
+    (brother(Parent, Person);(sister(Parent, Aunt), husband(Person, Aunt))).
+
+niece(Person, AuntUncle) :- female(Person),
+    (aunt(AuntUncle, Person); uncle(AuntUncle, Person)).
+
+nephew(Person, AuntUncle) :- male(Person),
+    (aunt(AuntUncle, Person); uncle(AuntUncle, Person)).
 
 
 
