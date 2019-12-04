@@ -4,7 +4,7 @@ class Literal:
       self.symbol = ''
 
    @staticmethod
-   def strpliteral(literal_str):
+   def parse_literal(literal_str):
       literal_str = literal_str.strip()
       literal = Literal()
 
