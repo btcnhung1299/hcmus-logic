@@ -9,6 +9,28 @@ class Clause:
    def __repr__(self):
       return '{}' if len(self.literals) == 0 else ' OR '.join(str(literal) for literal in self.literals)
 
+   def __lt__(self, rhs):
+      if len(self.literals) != len(rhs.literals):
+         return len(self.literals) < len(rhs.literals)
+      for idx, lit in enumerate(self.literals):
+         if lit != rhs.literals[idx]:
+            return lit < rhs.literals[idx]
+      return False
+
+   def normalize(self):
+      self.literals = sorted(set(self.literals))
+
+   def __eq__(self, rhs):
+      if len(self.literals) != len(rhs.literals):
+         return False
+      for idx, lit in enumerate(self.literals):
+         if lit != rhs.literals[idx]:
+            return False
+      return True
+
+   def __hash__(self):
+      return hash(tuple(self.literals))
+
    def empty(self):
       return len(self.literals) == 0
 
@@ -56,6 +78,7 @@ class Clause:
          for lj in cj.literals:
             if li.complement(lj):
                new_clause = Clause.merge(ci.copy_except(li), cj.copy_except(lj))
+               new_clause.normalize()
                if new_clause.is_pointless():
                   continue
                if new_clause.empty():

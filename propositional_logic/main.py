@@ -2,9 +2,11 @@ from knowledge_base import KnowledgeBase
 from clause import Clause
 from resolution import resolution
 
-kb = KnowledgeBase()
-inp_file = '../test/02.txt'
+# Edit input and output file here
+inp_file = 'test/02.txt'
+outp_file = 'test/02.out'
 
+kb = KnowledgeBase()
 with open(inp_file, 'r') as f:
    alpha = Clause.parse_clause(f.readline())
    num_clauses = f.readline()
@@ -12,16 +14,9 @@ with open(inp_file, 'r') as f:
    KnowledgeBase.declare(kb, clauses)
 f.close()
 
-print('----------------- KNOWLEDGE BASE -----------------')
-print('Number of clauses in KB:', len(kb.clauses))
-for clause in kb.clauses:
-   print('# {}'.format(clause))
+print('Done reading from', inp_file)
 
-
-print('----------------- RESOLUTION -----------------')
 entail, new_clauses = resolution(kb, alpha)
-
-outp_file = '../test/02.out'
 
 with open(outp_file, 'w') as f:
    for clauses in new_clauses:
@@ -29,3 +24,5 @@ with open(outp_file, 'w') as f:
       for clause in clauses:
          f.write('{}\n'.format(clause))
    f.write('{}'.format('YES' if entail else 'NO'))
+
+print('Done writing to', outp_file)

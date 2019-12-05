@@ -14,6 +14,10 @@ class Literal:
    def __eq__(self, rhs):
       return self.symbol == rhs.symbol and self.negated == rhs.negated
 
+   def __hash__(self):
+      s = '-' + self.symbol if self.negated else self.symbol
+      return hash(s)
+
    def complement(self, rhs):
       return self.symbol == rhs.symbol and self.negated != rhs.negated
 
