@@ -1,1 +1,1 @@
-son(charles, phillip).
+husband(X, camilla).

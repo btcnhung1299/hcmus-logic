@@ -5,6 +5,9 @@ class Rule:
       self.conditions = conditions.copy()
       self.conclusion = conclusion
 
+   def __repr__(self):
+      return '{} => {}'.format(' & '.join([str(condition) for condition in self.conditions]), str(self.conclusion))
+
    @staticmethod
    def parse_rule(rule_str):
       rule_str = rule_str.strip().rstrip('.').replace(' ', '')

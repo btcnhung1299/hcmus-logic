@@ -14,5 +14,10 @@ def unify(x, y, theta):
    return False
 
 def unify_var(var, x, theta):
-   if theta.contains(var, var):
-      return unify(
+   if theta.contains(var):
+      return unify(theta.substitute(var), x, theta)
+   if theta.contains(x):
+      return unify(var, theta.substitute(x), theta)
+   theta.add(var, x)
+   return theta
+
