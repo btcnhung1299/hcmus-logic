@@ -41,7 +41,7 @@ class Clause:
       self.literals.append(literal)
 
    def negate(self):
-      # Negate a clause by negate all of its literals; may cause unexpected behaviors
+      # Negate a clause by negating all of its literals; may cause unexpected behaviors
       for literal in self.literals:
          literal.negate()
 

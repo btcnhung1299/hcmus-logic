@@ -8,6 +8,7 @@ class KnowledgeBase:
    def declare(kb, list_clause_str):
       for clause_str in list_clause_str:
          clause = Clause.parse_clause(clause_str)
+         clause.flatten()
          kb.add(clause)
 
    def add(self, clause):
