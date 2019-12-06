@@ -1,6 +1,6 @@
 from knowledge_base import KnowledgeBase
 
-inp_file = 'test/royal_family_tree.pl'
+inp_file = 'test/crime.pl'
 query_file = 'test/query.pl'
 outp_file = 'test/answers.pl'
 

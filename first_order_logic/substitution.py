@@ -2,6 +2,9 @@ class Substitution:
    def __init__(self):
       self.mappings = dict()
 
+   def __repr__(self):
+      return str(self.mappings)
+
    def contains(self, var):
       return var in self.mappings
 
