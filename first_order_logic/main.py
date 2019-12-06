@@ -8,3 +8,7 @@ kb = KnowledgeBase()
 with open(inp_file, 'r') as f:
    list_sentences = f.readlines()
    KnowledgeBase.declare(kb, list_sentences)
+
+with open(query_file, 'r') as f:
+   for query_str in f.readlines():
+      kb.query(query_str)

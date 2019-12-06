@@ -21,3 +21,5 @@ class Rule:
 
       return Rule(conclusion=conclusion, conditions=conditions)
 
+   def standardize_arg(self):
+      return self

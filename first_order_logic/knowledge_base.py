@@ -1,6 +1,7 @@
 from sentence import Sentence
 from fact import Fact
 from rule import Rule
+from forward_chaining import forward_chaining
 
 class KnowledgeBase:
    def __init__(self):
@@ -12,6 +13,10 @@ class KnowledgeBase:
 
    def add_rule(self, rule):
       self.rules.append(rule)
+
+   def query(self, query_str):
+      alpha = Fact.parse_fact(query_str)
+      return forward_chaining(self, alpha)
 
    @staticmethod
    def declare(kb, list_sent_str):
