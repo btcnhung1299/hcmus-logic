@@ -1,9 +1,9 @@
-criminal(x) :- american(x), weapon(y), sell(x, y, z), hostile(z).
-sell(West, x, Nono) :- missile(x), own(Nono, x).
-weapon(x) :- missile(x).
-hostile(x) :- enemy(x, America).
+Criminal(x) :- American(x), Weapon(y), Sell(x, y, z), Hostile(z).
+Sell(West, x, Nono) :- Missile(x), Own(Nono, x).
+Weapon(x) :- Missile(x).
+Hostile(x) :- Enemy(x, America).
 
-own(Nono, B52).
-missile(B52).
-american(West).
-enemy(Nono, America).
+Own(Nono, B52).
+Missile(B52).
+American(West).
+Enemy(Nono, America).

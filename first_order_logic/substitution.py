@@ -12,8 +12,9 @@ class Substitution:
       return self.mappings[var]
 
    def substitute(self, fact):
-      for idx, arg in fact.args:
-         fact[idx] = self.substitute_of(arg)
+      for idx, arg in enumerate(fact.args):
+         if self.contains(arg):
+            fact.args[idx] = self.substitute_of(arg)
 
    def add(self, var, x):
       self.mappings[var] = x 

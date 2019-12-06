@@ -11,7 +11,7 @@ def unify(x, y, theta):
       return unify_var(y, x, theta)
    if utils.is_compound(x) and utils.is_compound(y):
       return unify(x.get_args(), y.get_args(), unify(x.get_op(), y.get_op(), theta))
-   if utils.is_list(x) and utils.is_list(y):
+   if utils.is_list(x) and utils.is_list(y) and len(x) == len(y):
       return unify(x[1:], y[1:], unify(x[0], y[0], theta))
    return False
 

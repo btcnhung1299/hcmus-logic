@@ -1,1 +1,1 @@
-husband(X, camilla).
+Criminal(x).
