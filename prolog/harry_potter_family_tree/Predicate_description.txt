@@ -1,0 +1,41 @@
+/*Gender*/
+male(Person)
+female(Person)
+
+parent(Parent, Child)
+
+/*Marital status*/
+married(Person, Person)
+dating(Person, Person)
+
+boyfriend(Person, Girlfriend)
+girlfriend(Person, Boyfriend)
+husband(Person, Wife)
+wife(Person, Husband)
+father(Parent, Child)
+mother(Parent, Child)
+child(Child, Parent)
+son(Child, Parent)
+daughter(Child, Parent)
+
+grandparent(GP,GC) 
+grandmother(GM,GC)
+grandfather(GF,GC) 
+
+grandchild(GC,GP) 
+grandson(GS,GP) 
+granddaughter(GD,GP) 
+
+
+sibling(Person1, Person2)
+brother(Person, Sibling)
+sister(Person, Sibling)
+
+aunt(Person, NieceNephew)
+uncle(Person, NieceNephew)
+niece(Person, AuntUncle)
+nephew(Person, AuntUncle)
+
+
+
+
