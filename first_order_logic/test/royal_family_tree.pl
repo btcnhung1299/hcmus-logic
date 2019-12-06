@@ -29,7 +29,8 @@ female(autumn).
 female(zara).
 female(louise).
 
-/* Marital status (needs to be set for both partners). */
+/* Marital status
+Note: martial status needs to be set for both partners). */
 married(elizabethII, philip).
 married(philip, elizabethII).
 married(charles, camilla).
@@ -54,7 +55,8 @@ divorced(charles, diana).
 divorced(mark, anne).
 divorced(anne, mark).
 
-/* Family relationship: Define from top to bottom, from left to right */
+/* Family relationship:
+Define from top to bottom, from left to right */
 parent(elizabethII, charles).
 parent(philip, charles).
 parent(elizabethII, andrew).
@@ -112,20 +114,20 @@ grandchild(GC,GP) :- grandparent(GP,GC).
 grandson(GS,GP) :- grandchild(GS,GP),male(GS).
 granddaughter(GD,GP) :- grandchild(GD,GP), female(GD).
 
-sibling(Person1,Person2) :- father(Father, Person1), father(Father, Person2), mother(Mother, Person1), mother(Mother, Person2), Person1 \= Person2.
+sibling(Person1,Person2) :- father(Father, Person1), father(Father, Person2), mother(Mother, Person1), mother(Mother, Person2).
 brother(Person,Sibling) :- sibling(Person, Sibling), male(Sibling).
 sister(Person,Sibling) :- sibling(Person, Sibling), female(Sibling).
 
 /* Aunt is mother's sister or father's sister or uncle's wife, Uncle in this case can be interpreted as brother of parent*/
 /* OR operator: http://www.cse.unsw.edu.au/~billw/dictionaries/prolog/or.html */
-aunt(Person, NieceNephew) :- parent(Parent, NieceNephew),
-    (sister(Parent, Person);(brother(Parent, Uncle), wife(Person, Uncle))).
+aunt(Person, NieceNephew) :- parent(Parent, NieceNephew), sister(Parent, Person).
+aunt(Person, NieceNephew) :- parent(Parent, NieceNephew), brother(Parent, Uncle), wife(Person, Uncle).
 
-uncle(Person, NieceNephew) :- parent(Parent, NieceNephew),
-    (brother(Parent, Person);(sister(Parent, Aunt), husband(Person, Aunt))).
+uncle(Person, NieceNephew) :- parent(Parent, NieceNephew), brother(Parent, Person).
+uncle(Person, NieceNephew) :- parent(Parent, NieceNephew), sister(Parent, Aunt), husband(Person, Aunt).
 
-niece(Person, AuntUncle) :- female(Person),
-    (aunt(AuntUncle, Person); uncle(AuntUncle, Person)).
+niece(Person, AuntUncle) :- female(Person), aunt(AuntUncle, Person).
+niece(Person, AuntUncle) :- female(Person), uncle(AuntUncle, Person).
 
-nephew(Person, AuntUncle) :- male(Person),
-    (aunt(AuntUncle, Person); uncle(AuntUncle, Person)).
+nephew(Person, AuntUncle) :- male(Person), aunt(AuntUncle, Person).
+nephew(Person, AuntUncle) :- male(Person), uncle(AuntUncle, Person).
