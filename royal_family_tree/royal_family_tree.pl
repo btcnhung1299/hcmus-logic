@@ -1,100 +1,100 @@
 /* Gender */
-male(philip).
-male(charles).
-male(andrew).
-male(william).
-male(harry).
-male(george).
-male(louis).
-male(archie).
-male(mark).
-male(timothy).
-male(edward).
-male(peter).
-male(mike).
+male(prince_philip).
+male(prince_charles).
+male(prince_andrew).
+male(prince_william).
+male(prince_harry).
+male(prince_george).
+male(prince_louis).
+male(archie_harrison).
+male(mark_phillips).
+male(timothy_laurence).
+male(prince_edward).
+male(peter_phillips).
+male(mike_tindall).
 male(james).
 
-female(elizabethII).
-female(diana).
-female(camilla).
-female(sarah).
-female(kate).
-female(meghan).
-female(eugenie).
-female(beatrice).
-female(charlotte).
-female(anne).
-female(sophie).
-female(autumn).
-female(zara).
-female(louise).
+female(queen_elizabethII).
+female(princess_diana).
+female(camilla_parker_bowles).
+female(sarah_ferguson).
+female(kate_middleton).
+female(meghan_markle).
+female(princess_eugenie).
+female(princess_beatrice).
+female(princess_charlotte).
+female(princess_anne).
+female(sophie_rhys_jones).
+female(autumn_phillips).
+female(zara_tindall).
+female(lady_louise).
 
 /* Marital status
 Note: marital status needs to be set for both partners.
 */
-married(elizabethII, philip).
-married(philip, elizabethII).
-married(charles, camilla).
-married(camilla, charles).
-married(andrew, sarah).
-married(sarah, andrew).
-married(william, kate).
-married(kate, william).
-married(harry, meghan).
-married(meghan, harry).
-married(anne, timothy).
-married(timothy, anne).
-married(edward, sophie).
-married(sophie, edward).
-married(peter, autumn).
-married(autumn, peter).
-married(zara, mike).
-married(mike, zara).
+married(queen_elizabethII, prince_philip).
+married(prince_philip,queen_elizabethII).
+married(prince_charles, camilla_parker_bowles).
+married(camilla_parker_bowles, prince_charles).
+married(prince_andrew, sarah_ferguson).
+married(sarah_ferguson, prince_andrew).
+married(prince_william, kate_middleton).
+married(kate_middleton, prince_william).
+married(prince_harry, meghan_markle).
+married(meghan_markle, prince_harry).
+married(princess_anne, timothy_laurence).
+married(timothy_laurence, princess_anne).
+married(prince_edward, sophie_rhys_jones).
+married(sophie_rhys_jones, prince_edward).
+married(peter_phillips, autumn_phillips).
+married(autumn_phillips, peter_phillips).
+married(zara_tindall, mike_tindall).
+married(mike_tindall, zara_tindall).
 
-divorced(diana, charles).
-divorced(charles, diana).
-divorced(mark, anne).
-divorced(anne, mark).
+divorced(princess_diana, prince_charles).
+divorced(prince_charles, princess_diana).
+divorced(mark_phillips, princess_anne).
+divorced(princess_anne, mark_phillips).
 
 /* Family relationship
 - Define from top to bottom, from left to right*/
-parent(elizabethII, charles).
-parent(philip, charles).
-parent(elizabethII, andrew).
-parent(philip, andrew).
-parent(elizabethII, anne).
-parent(philip, anne).
-parent(elizabethII, edward).
-parent(philip, edward).
+parent(queen_elizabethII, prince_charles).
+parent(prince_philip, prince_charles).
+parent(queen_elizabethII, prince_andrew).
+parent(prince_philip, prince_andrew).
+parent(queen_elizabethII, princess_anne).
+parent(prince_philip, princess_anne).
+parent(queen_elizabethII, prince_edward).
+parent(prince_philip, prince_edward).
 
-parent(diana, william).
-parent(charles, william).
-parent(diana, harry).
-parent(charles, harry).
+parent(princess_diana, prince_william).
+parent(prince_charles, prince_william).
+parent(princess_diana, prince_harry).
+parent(prince_charles, prince_harry).
 
-parent(andrew, eugenie).
-parent(sarah, eugenie).
-parent(andrew, beatrice).
-parent(sarah, beatrice).
+parent(prince_andrew, princess_eugenie).
+parent(sarah_ferguson, princess_eugenie).
+parent(prince_andrew, princess_beatrice).
+parent(sarah_ferguson, princess_beatrice).
 
-parent(kate, george).
-parent(william, george).
-parent(kate, charlotte).
-parent(william, charlotte).
-parent(kate, louis).
-parent(william, louis).
-parent(harry, archie).
-parent(meghan, archie).
+parent(kate_middleton, prince_george).
+parent(prince_william, prince_george).
+parent(kate_middleton, princess_charlotte).
+parent(prince_william, princess_charlotte).
+parent(kate_middleton, prince_louis).
+parent(prince_william, prince_louis).
+parent(prince_harry, archie_harrison).
+parent(meghan_markle, archie_harrison).
 
-parent(mark, peter).
-parent(anne, peter).
-parent(mark, zara).
-parent(anne, zara).
+parent(mark_phillips, peter_phillips).
+parent(princess_anne, peter_phillips).
+parent(mark_phillips, zara_tindall).
+parent(princess_anne, zara_tindall).
 
-parent(edward, louise).
-parent(sophie, louise).
-parent(edward, james).
-parent(sophie, james).
+parent(prince_edward, lady_louise).
+parent(sophie_rhys_jones, lady_louise).
+parent(prince_edward, james).
+parent(sophie_rhys_jones, james).
 
 /* Rules */
 father(Parent,Child) :- parent(Parent,Child), male(Parent).
@@ -116,8 +116,8 @@ grandson(GS,GP) :- grandchild(GS,GP),male(GS).
 granddaughter(GD,GP) :- grandchild(GD,GP), female(GD).
 
 sibling(Person1,Person2) :- father(Father, Person1), father(Father, Person2), mother(Mother, Person1), mother(Mother, Person2), Person1 \= Person2.
-brother(Person,Sibling) :- sibling(Person, Sibling), male(Sibling).
-sister(Person,Sibling) :- sibling(Person, Sibling), female(Sibling).
+brother(Person,Sibling) :- sibling(Person, Sibling), male(Person).
+sister(Person,Sibling) :- sibling(Person, Sibling), female(Person).
 
 /* Aunt is mother's sister or father's sister or uncle's wife
 - Uncle in this case can be interpreted as brother of parent
