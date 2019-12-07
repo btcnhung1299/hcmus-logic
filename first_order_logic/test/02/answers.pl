@@ -1,47 +1,91 @@
-uncle(X, prince_william).
-X = prince_edward ;
-X = prince_andrew.
-grandparent(prince_philip, prince_william).
+mother(X, prince_andrew).
+X = queen_elizabethII.
+
+niece(X, princess_anne).
+X = princess_eugenie ;
+X = lady_louise ;
+X = princess_beatrice.
+
+uncle(timothy_laurence, james).
 true.
-child(princess_beatrice, sarah_ferguson).
-true.
-child(princess_beatrice, prince_edward).
+
+aunt(X, princess_charlotte).
+X = meghan_markle.
+
+grandmother(camilla_parker_bowles, archie_harrison).
 false.
-grandmother(queen_elizabethII, princess_eugenie).
-true.
-married(X, kate_middleton).
-X = prince_william.
-husband(X, kate_middleton).
-X = prince_william.
-son(X, prince_philip).
-X = prince_edward ;
+
+grandmother(X, archie_harrison).
+X = princess_diana.
+
+nephew(X, meghan_markle).
+X = prince_george ;
+X = prince_louis.
+
+grandson(X, prince_charles).
+X = archie_harrison ;
+X = prince_george ;
+X = prince_louis.
+
+grandchild(X, princess_diana).
+X = princess_charlotte ;
+X = archie_harrison ;
+X = prince_george ;
+X = prince_louis.
+
+brother(X, zara_tindall).
+X = peter_phillips.
+
+uncle(X, princess_eugenie).
 X = prince_charles ;
-X = prince_andrew.
-sister(X, prince_andrew).
-X = princess_anne.
-niece(X, prince_charles).
+X = prince_edward ;
+X = timothy_laurence.
+
+grandchild(X, queen_elizabethII).
+X = peter_phillips ;
+X = princess_beatrice ;
 X = princess_eugenie ;
-X = princess_beatrice.
-wife(queen_elizabethII, prince_philip).
-true.
-son(prince_william, prince_philip).
-false.
-nephew(X, prince_edward).
-X = prince_william.
-aunt(X, prince_william).
-X = sarah_ferguson ;
-X = princess_anne.
-daughter(X, prince_philip).
-X = princess_anne.
-wife(X, prince_edward).
-false.
-husband(X, princess_anne).
-false.
-sibling(princess_anne, prince_edward).
-true.
-grandchild(X, prince_philip).
-X = princess_eugenie ;
+X = james ;
 X = prince_william ;
-X = princess_beatrice.
-grandfather(X, prince_charles).
+X = zara_tindall ;
+X = lady_louise ;
+X = prince_harry.
+
+father(X, autumn_phillips).
 false.
+
+child(mike_tindall, mark_phillips).
+false.
+
+wife(X, prince_charles).
+X = camilla_parker_bowles.
+
+husband(mark_phillips, princess_anne).
+false.
+
+husband(X, princess_anne).
+X = timothy_laurence.
+
+sibling(X, prince_louis).
+X = princess_charlotte ;
+X = prince_george.
+
+sister(X, james).
+X = lady_louise.
+
+wife(queen_elizabethII, mike_tindall).
+false.
+
+grandparent(X, prince_louis).
+X = princess_diana ;
+X = prince_charles.
+
+daughter(X, princess_anne).
+X = zara_tindall.
+
+son(X, meghan_markle).
+X = archie_harrison.
+
+son(X, sarah_ferguson).
+false.
+

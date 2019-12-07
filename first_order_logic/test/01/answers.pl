@@ -1,0 +1,3 @@
+criminal(X).
+X = west.
+

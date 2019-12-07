@@ -17,7 +17,6 @@ def subst(facts_1, facts_2):           # Generalized Modus Ponens
 
 def forward_chaining(kb, alpha):
    res = set()
-
    # Pre-check if current facts are enough to answer
    for fact in kb.facts:
       phi = unify(fact, alpha, Substitution())
