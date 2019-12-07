@@ -14,9 +14,7 @@ class KnowledgeBase:
    def add_rule(self, rule):
       self.rules.append(rule)
 
-   def query(self, query_str):
-      alpha = Fact.parse_fact(query_str)
-      print(alpha, end='.\n')
+   def query(self, alpha):
       return forward_chaining(self, alpha)
 
    def get_potential_facts(self, rule):
