@@ -12,7 +12,7 @@ uncle(X, 'princess_eugenie').
 grandchild(X, 'queen_elizabethII').
 father(X, 'autumn_phillips').
 child('mike_tindall', 'mark_phillips').
-wife(X, 'prince_charles'),
+wife(X, 'prince_charles').
 husband('mark_phillips', 'princess_anne').
 husband(X, 'princess_anne').
 sibling(X, 'prince_louis').
