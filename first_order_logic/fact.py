@@ -23,7 +23,7 @@ class Fact:
 
    def __hash__(self):
       return hash(str(self))
-
+   
    def copy(self):
       return Fact(self.op, self.args.copy(), self.negated)
 

@@ -3,13 +3,16 @@ class Substitution:
       self.mappings = dict()
 
    def __repr__(self):
-      return str(self.mappings)
+      return ', '.join('{} = {}'.format(key, value) for key, value in self.mappings.items())
 
    def __eq__(self, rhs):
       return self.mappings == rhs.mappings
 
    def __hash__(self):
       return hash(frozenset(self.mappings.items()))
+
+   def empty(self):
+      return len(self.mappings) == 0
 
    def contains(self, var):
       return var in self.mappings

@@ -11,5 +11,5 @@ with open(inp_file, 'r') as f:
 
 with open(query_file, 'r') as f:
    for query_str in f.readlines():
-      for subst in set(kb.query(query_str)):
-         print(subst)
+      substs = set(kb.query(query_str))
+      print(*substs, sep=' ;\n', end='.\n')

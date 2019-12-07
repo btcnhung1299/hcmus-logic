@@ -16,43 +16,60 @@ def subst(facts_1, facts_2):           # Generalized Modus Ponens
    return unify(facts_1, facts_2, Substitution())
 
 def forward_chaining(kb, alpha):
+   res = set()
+
    # Pre-check if current facts are enough to answer
    for fact in kb.facts:
       phi = unify(fact, alpha, Substitution())
       if phi:
-         yield phi
+         if phi.empty():
+            res.add('true')
+            return res
+         res.add(phi)
 
    last_generated_facts = kb.facts.copy()
 
    while True:
       new_facts = set()
-      kb.facts = set(kb.facts)
  
-      # Incremental: At iteration t, check a rule only if its premises includes
+      # Incremental: At iteration t, check a rule only if its premises includes at least
       # a conjunct pi that unified with the fact pi' newly inferred at iteration t - 1
       for rule in kb.rules:
          if not rule.may_triggered(last_generated_facts):
             continue
 
-         # Find all pattern matching
          num_premises = rule.get_num_premises()
-         for comb_facts in itertools.combinations(sorted(kb.facts), num_premises):
-            existed_facts = [fact for fact in comb_facts]
-            theta = subst(rule.premises, existed_facts)
+         # Get facts that relevant to the current rule
+         potential_facts = kb.get_potential_facts(rule)
+
+         # Check if rule contains premises with the same predicate
+         if not rule.dup_predicate:        
+            potential_premises = itertools.combinations(sorted(potential_facts), num_premises)
+         else:
+            # Assumption on order of premises may failed on something like grandparent rule with two parent relations
+            potential_premises = itertools.permutations(potential_facts, num_premises)
+
+         for tuple_premises in potential_premises:
+            premises = [premise for premise in tuple_premises]
+            theta = subst(rule.premises, premises)
             if not theta:
                continue
                         
             new_fact = rule.conclusion.copy()
             theta.substitute(new_fact)
             
-            if new_fact not in new_facts:
+            if new_fact not in new_facts and new_fact not in kb.facts:
                new_facts.add(new_fact)
                phi = unify(new_fact, alpha, Substitution())
                if phi:
-                  kb.facts.update(new_facts)
-                  yield phi
+                  if phi.empty():
+                     res.add('true')
+                     return res
+                  res.add(phi)
 
-      last_generated_facts = new_facts.difference(kb.facts)
-      if not last_generated_facts:
-         return False
-      kb.facts.update(last_generated_facts)
+      last_generated_facts = new_facts
+      if not new_facts:
+         if len(res) == 0:
+            res.add('false')
+         return res
+      kb.facts.update(new_facts)
