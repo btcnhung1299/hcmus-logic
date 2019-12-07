@@ -1,4 +1,3 @@
-parent(X, princess_eugenie).
-/*sister(X, prince_andrew).
-aunt(X, princess_eugenie).
-niece(X, princess_anne).*/
+daughter(X, prince_philip).
+sister(X, prince_andrew).
+niece(X, prince_charles).

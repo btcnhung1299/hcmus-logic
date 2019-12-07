@@ -5,6 +5,12 @@ class Substitution:
    def __repr__(self):
       return str(self.mappings)
 
+   def __eq__(self, rhs):
+      return self.mappings == rhs.mappings
+
+   def __hash__(self):
+      return hash(frozenset(self.mappings.items()))
+
    def contains(self, var):
       return var in self.mappings
 

@@ -5,11 +5,11 @@ from forward_chaining import forward_chaining
 
 class KnowledgeBase:
    def __init__(self):
-      self.facts = set()
+      self.facts = []
       self.rules = []
 
    def add_fact(self, fact):
-      self.facts.add(fact)
+      self.facts.append(fact)
 
    def add_rule(self, rule):
       self.rules.append(rule)

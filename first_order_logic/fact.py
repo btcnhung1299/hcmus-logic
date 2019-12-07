@@ -1,8 +1,8 @@
 class Fact:
    def __init__(self, op='', args=[], negated=False):
-      self.op = op
-      self.args = args.copy()
-      self.negated = negated
+      self.op = op               # Relation or function
+      self.args = args           # Varibles and constants
+      self.negated = negated     # Not
 
    def __repr__(self):
       return '{}({})'.format(self.op, ', '.join(self.args))
@@ -11,7 +11,7 @@ class Fact:
       if self.op != rhs.op:
          return self.op < rhs.op
       if self.negated != rhs.negated:
-         return self.negateed < rhs.negated
+         return self.negated < rhs.negated
       return self.args < rhs.args
 
    def __eq__(self, rhs):
@@ -25,22 +25,24 @@ class Fact:
       return hash(str(self))
 
    def copy(self):
-      return Fact(op=self.op, args=self.args, negated=self.negated)
+      return Fact(self.op, self.args.copy(), self.negated)
 
    def negate(self):
       self.negated = 1 - self.negated
 
    def get_args(self):
-      return self.args.copy()
+      return self.args
 
    def get_op(self):
       return self.op
 
    @staticmethod
    def parse_fact(fact_str):
+      # Example: female(princess_diana).
       fact_str = fact_str.strip().rstrip('.').replace(' ', '')
       sep_idx = fact_str.index('(')
+
+      # Op and args are separated by '('
       op = fact_str[:sep_idx]
       args = fact_str[sep_idx + 1 : -1].split(',')
-      return Fact(op=op, args=args)
-
+      return Fact(op, args)
