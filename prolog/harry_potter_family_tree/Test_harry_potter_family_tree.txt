@@ -13,7 +13,7 @@ father(X, 'hugo_weasley').
 mother('molly_weasley', 'molly_weasley_ii').
 husband(X, 'nymphadora_tonks').
 brother(X, 'scorpius_malfoy').
-sister('rose_weasley, 'hugo_weasley').
+sister('rose_weasley', 'hugo_weasley').
 sibling(X, 'albus_severus_potter').
 grandfather(X, 'louis_weasley').
 grandmother(X, 'fred_weasley_ii').
