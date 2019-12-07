@@ -137,11 +137,11 @@ sister(Person,Sibling) :- sibling(Person, Sibling), female(Person).
 - Uncle in this case can be interpreted as brother of parent
 */
 /*OR operator: http://www.cse.unsw.edu.au/~billw/dictionaries/prolog/or.html*/
-aunt(Person, NieceNephew) :- parent(Parent, NieceNephew),
-    (sister(Parent, Person);(brother(Parent, Uncle), wife(Person, Uncle))).
+aunt(Person, NieceNephew) :- female(Person), parent(Parent, NieceNephew),
+    (sister(Person, Parent);(brother(Uncle, Parent), wife(Person, Uncle))).
 
-uncle(Person, NieceNephew) :- parent(Parent, NieceNephew),
-    (brother(Parent, Person);(sister(Parent, Aunt), husband(Person, Aunt))).
+uncle(Person, NieceNephew) :- male(Person), parent(Parent, NieceNephew),
+    (brother(Person, Parent);(sister(Aunt, Parent), husband(Person, Aunt))).
 
 niece(Person, AuntUncle) :- female(Person),
     (aunt(AuntUncle, Person); uncle(AuntUncle, Person)).
