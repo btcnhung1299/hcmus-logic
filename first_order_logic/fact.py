@@ -14,6 +14,16 @@ class Fact:
          return self.negateed < rhs.negated
       return self.args < rhs.args
 
+   def __eq__(self, rhs):
+      if self.op != rhs.op:
+         return False
+      if self.negated != rhs.negated:
+         return False
+      return self.args == rhs.args
+
+   def __hash__(self):
+      return hash(str(self))
+
    def copy(self):
       return Fact(op=self.op, args=self.args, negated=self.negated)
 

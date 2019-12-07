@@ -1,0 +1,87 @@
+mother(X, 'prince_andrew').
+X = queen_elizabethII.
+
+niece(X, 'princess_anne').
+X = princess_eugenie ;
+X = princess_beatrice ;
+X = lady_louise.
+
+aunt(X, 'princess_charlotte').
+X = meghan_markle.
+
+grandmother('camilla_parker_bowles', 'archie_harrison').
+false.
+
+grandmother(X, 'archie_harrison').
+X = princess_diana.
+
+nephew(X, 'meghan_markle').
+X = prince_george ;
+X = prince_louis.
+
+grandson(X, 'prince_charles').
+X = prince_george ;
+X = prince_louis ;
+X = archie_harrison.
+
+grandchild(X, 'princess_diana').
+X = prince_george ;
+X = princess_charlotte ;
+X = prince_louis ;
+X = archie_harrison.
+
+brother(X, 'zara_tindall').
+X = peter_phillips .
+
+uncle(X, 'princess_eugenie').
+X = prince_charles ;
+X = timothy_laurence ;
+X = prince_edward .
+
+grandchild(X, 'queen_elizabethII').
+X = prince_william ;
+X = prince_harry ;
+X = princess_eugenie ;
+X = princess_beatrice ;
+X = peter_phillips ;
+X = zara_tindall ;
+X = lady_louise ;
+X = james.
+
+father(X, 'autumn_phillips').
+false.
+
+child('mike_tindall', 'mark_phillips').
+false.
+
+wife(X, 'prince_charles').
+X = camilla_parker_bowles.
+
+husband('mark_phillips', 'princess_anne').
+false.
+
+husband(X, 'princess_anne').
+X = timothy_laurence.
+
+sibling(X, 'prince_louis').
+X = prince_george ;
+X = princess_charlotte.
+
+sister(X, 'james').
+X = lady_louise .
+
+wife('queen_elizabethII', 'mike_tindall').
+false.
+
+grandparent(X, 'prince_louis').
+X = princess_diana ;
+X = prince_charles.
+
+daughter(X, 'princess_anne').
+X = zara_tindall.
+
+son(X, 'meghan_markle').
+X = archie_harrison.
+
+son(X, 'sarah_ferguson').
+false.
