@@ -10,6 +10,7 @@ D
 -A OR -B
 -A OR D
 -B OR D
-1
+2
 {}
+-A
 YES

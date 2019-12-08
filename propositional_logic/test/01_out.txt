@@ -2,6 +2,9 @@
 -A
 B
 -C
-1
+4
 {}
+A OR -B
+A OR C
+-B OR C
 YES

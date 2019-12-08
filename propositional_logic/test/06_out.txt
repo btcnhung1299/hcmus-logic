@@ -14,7 +14,10 @@ D
 C OR D
 C OR E
 -A OR C OR E
-2
+5
 {}
+-A
 C
+E
+-A OR E
 YES

@@ -4,6 +4,7 @@ from clause import Clause
 
 def resolution(kb, alpha):
    steps = []
+   entail = False
    alpha.negate()
    clauses = set(kb.clauses)
    clauses.add(alpha) 
@@ -14,16 +15,13 @@ def resolution(kb, alpha):
       for (ci, cj) in itertools.combinations(sorted(clauses), 2):
          resolvents, contradict = Clause.resolve(ci, cj)
          new_clauses.update(resolvents)
-
-         if contradict:
-            generated_clauses = sorted(new_clauses.difference(clauses))
-            steps.append(generated_clauses)
-            return True, steps
+         entail |= contradict
 
       generated_clauses = sorted(new_clauses.difference(clauses))
       steps.append(generated_clauses)
-      
-      if len(generated_clauses) == 0:
-         return False, steps
-
       clauses.update(new_clauses)
+
+      if entail:
+         return True, steps
+      if not generated_clauses:
+         return False, steps

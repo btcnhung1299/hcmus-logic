@@ -3,8 +3,9 @@ from clause import Clause
 from resolution import resolution
 
 # Edit input and output file here
-inp_file = 'test/01.txt'
-outp_file = 'test/01_out.txt'
+test_case = input().strip()
+inp_file = 'test/' + test_case + '.txt'
+outp_file = 'test/' + test_case + '_out.txt'
 
 kb = KnowledgeBase()
 with open(inp_file, 'r') as f:
