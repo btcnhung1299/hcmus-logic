@@ -2,8 +2,8 @@ mother(X, prince_andrew).
 X = queen_elizabethII.
 
 niece(X, princess_anne).
-X = princess_eugenie ;
 X = lady_louise ;
+X = princess_eugenie ;
 X = princess_beatrice.
 
 uncle(timothy_laurence, james).
@@ -23,33 +23,33 @@ X = prince_george ;
 X = prince_louis.
 
 grandson(X, prince_charles).
-X = archie_harrison ;
 X = prince_george ;
+X = archie_harrison ;
 X = prince_louis.
 
 grandchild(X, princess_diana).
-X = princess_charlotte ;
 X = archie_harrison ;
 X = prince_george ;
+X = princess_charlotte ;
 X = prince_louis.
 
 brother(X, zara_tindall).
 X = peter_phillips.
 
 uncle(X, princess_eugenie).
-X = prince_charles ;
 X = prince_edward ;
+X = prince_charles ;
 X = timothy_laurence.
 
 grandchild(X, queen_elizabethII).
-X = peter_phillips ;
-X = princess_beatrice ;
-X = princess_eugenie ;
 X = james ;
-X = prince_william ;
+X = peter_phillips ;
 X = zara_tindall ;
 X = lady_louise ;
-X = prince_harry.
+X = princess_beatrice ;
+X = prince_harry ;
+X = prince_william ;
+X = princess_eugenie.
 
 father(X, autumn_phillips).
 false.
@@ -67,8 +67,8 @@ husband(X, princess_anne).
 X = timothy_laurence.
 
 sibling(X, prince_louis).
-X = princess_charlotte ;
-X = prince_george.
+X = prince_george ;
+X = princess_charlotte.
 
 sister(X, james).
 X = lady_louise.
@@ -77,8 +77,8 @@ wife(queen_elizabethII, mike_tindall).
 false.
 
 grandparent(X, prince_louis).
-X = princess_diana ;
-X = prince_charles.
+X = prince_charles ;
+X = princess_diana.
 
 daughter(X, princess_anne).
 X = zara_tindall.

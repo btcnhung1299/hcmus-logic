@@ -5,7 +5,6 @@ from unify import unify
 from substitution import Substitution
 
 def subst(facts_1, facts_2):           # Generalized Modus Ponens
-   # Suppose that facts_1 and facts_2 are sorted ascendingly
    if len(facts_1) != len(facts_2):
       return False
 
@@ -31,7 +30,8 @@ def forward_chaining(kb, alpha):
    while True:
       new_facts = set()
  
-      # Incremental: At iteration t, check a rule only if its premises includes at least
+      # Optimize: Incremental forward chaining
+      # At iteration t, check a rule only if its premises includes at least
       # a conjunct pi that unified with the fact pi' newly inferred at iteration t - 1
       for rule in kb.rules:
          if not rule.may_triggered(last_generated_facts):
@@ -62,13 +62,14 @@ def forward_chaining(kb, alpha):
                phi = unify(new_fact, alpha, Substitution())
                if phi:
                   if phi.empty():
+                     kb.facts.update(new_facts)
                      res.add('true')
                      return res
                   res.add(phi)
 
       last_generated_facts = new_facts
       if not new_facts:
-         if len(res) == 0:
+         if not res:
             res.add('false')
          return res
       kb.facts.update(new_facts)
