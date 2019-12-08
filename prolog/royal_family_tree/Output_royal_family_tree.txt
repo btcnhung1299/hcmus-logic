@@ -6,6 +6,9 @@ X = princess_eugenie ;
 X = princess_beatrice ;
 X = lady_louise.
 
+uncle('timothy_laurence', 'james').
+true.
+
 aunt(X, 'princess_charlotte').
 X = meghan_markle.
 
